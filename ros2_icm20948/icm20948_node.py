@@ -89,3 +89,45 @@ def main(args=None):
 
 if __name__ == "__main__":
     main()
+
+"""
+ICM-20948 Gyroscope Configuration (Table 16)
+
+GYRO_FCHOICE | GYRO_DLPFCFG | 3dB BW (Hz) | NBW (Hz) | Output Rate (Hz)
+-----------------------------------------------------------------------
+     0       |      x       |   12106    |  12316  | 9000
+
+     1       |      0       |   196.6    |  229.8  | 1125 / (1 + GYRO_SMPLRT_DIV)
+     1       |      1       |   151.8    |  187.6  | 1125 / (1 + GYRO_SMPLRT_DIV)
+     1       |      2       |   119.5    |  154.3  | 1125 / (1 + GYRO_SMPLRT_DIV)
+     1       |      3       |    51.2    |   73.3  | 1125 / (1 + GYRO_SMPLRT_DIV)
+     1       |      4       |    23.9    |   35.9  | 1125 / (1 + GYRO_SMPLRT_DIV)
+     1       |      5       |    11.6    |   17.8  | 1125 / (1 + GYRO_SMPLRT_DIV)
+     1       |      6       |     5.7    |    8.9  | 1125 / (1 + GYRO_SMPLRT_DIV)
+     1       |      7       |   361.4    |  376.5  | 1125 / (1 + GYRO_SMPLRT_DIV)
+
+Notes:
+- GYRO_SMPLRT_DIV is an 8-bit value (0–255)
+- Output rate formula applies when GYRO_FCHOICE = 1
+"""
+"""
+ICM-20948 Accelerometer Configuration (Table 18)
+
+ACCEL_FCHOICE | ACCEL_DLPFCFG | 3dB BW (Hz) | NBW (Hz) | Output Rate (Hz)
+-------------------------------------------------------------------------
+      0       |       x       |   1209     |  1248   | 4500
+
+      1       |       0       |   246.0    |  265.0  | 1125 / (1 + ACCEL_SMPLRT_DIV)
+      1       |       1       |   246.0    |  265.0  | 1125 / (1 + ACCEL_SMPLRT_DIV)
+      1       |       2       |   111.4    |  136.0  | 1125 / (1 + ACCEL_SMPLRT_DIV)
+      1       |       3       |    50.4    |   68.8  | 1125 / (1 + ACCEL_SMPLRT_DIV)
+      1       |       4       |    23.9    |   34.4  | 1125 / (1 + ACCEL_SMPLRT_DIV)
+      1       |       5       |    11.5    |   17.0  | 1125 / (1 + ACCEL_SMPLRT_DIV)
+      1       |       6       |     5.7    |    8.3  | 1125 / (1 + ACCEL_SMPLRT_DIV)
+      1       |       7       |   473      |  499    | 1125 / (1 + ACCEL_SMPLRT_DIV)
+
+Notes:
+- ACCEL_SMPLRT_DIV is a 12-bit value (0–4095)
+- Data rate = 1.125 kHz / (1 + ACCEL_SMPLRT_DIV)
+- Output rate applies after DLPF block
+"""
