@@ -35,6 +35,12 @@ class ICM20948Node(Node):
         self.imu.begin()
         self.imu.setFullScaleRangeGyro(qwiic_icm20948.dps2000)
         self.imu.setFullScaleRangeAccel(qwiic_icm20948.gpm16)
+        
+        self.imu.enableDlpfGyro(True)
+        self.imu.setDLPFcfgGyro(3)       # moderate cutoff (0..7)
+
+        self.imu.enableDlpfAccel(True)
+        self.imu.setDLPFcfgAccel(3)
 
         # Publishers
         self.imu_pub_ = self.create_publisher(sensor_msgs.msg.Imu, "/imu/data_raw", 10)
